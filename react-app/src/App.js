@@ -1,5 +1,6 @@
 import React, { Component, forwardRef } from "react";
 import axios from "axios";
+import {Grid} from "semantic-ui-react";
 import MaterialTable from "material-table";
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -40,11 +41,46 @@ const tableIcons = {
 };
 
 const columns = [
-  { title: 'User Name', field: 'userId' },
-  { title: 'Role', field: 'userRole' },
-  { title: 'Name', field: 'name' },
-  { title: 'Email', field: 'email' },
-  { title: 'Company', field: 'company' }
+  { title: 'User Name', field: 'userId',  cellStyle: {
+       width: 20,
+       maxWidth: 20
+     },
+     headerStyle: {
+       width:20,
+       maxWidth: 20
+     } },
+  { title: 'Role', field: 'userRole', cellStyle: {
+       width: 10,
+       maxWidth: 10
+     },
+     headerStyle: {
+       width:10,
+       maxWidth: 10
+     } },
+  { title: 'Name', field: 'name' , cellStyle: {
+       width: 30,
+       maxWidth: 30
+     },
+     headerStyle: {
+       width:30,
+       maxWidth: 30
+     } },
+  { title: 'Email', field: 'email' , cellStyle: {
+       width: 20,
+       maxWidth: 20
+     },
+     headerStyle: {
+       width:20,
+       maxWidth: 20
+     } },
+  { title: 'Company', field: 'company' , cellStyle: {
+       width: 20,
+       maxWidth: 20
+     },
+     headerStyle: {
+       width:20,
+       maxWidth: 20
+     } }
 ];
 
 //const pesistData = 'http://localhost:8080/';
@@ -128,11 +164,13 @@ deleteUser = (user) => {
 render() {
   return (
     <div className="App">
-      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" height="10%" />
 
-        <div style={{  padding: '10px 0px 0px 10px', maxWidth: "100%" }}>
+        <Grid>
+        <Grid.Row style={{ padding: '10px 0px 0px 0px'}} width={16}>
+        <Grid.Column width={16}>
         <MaterialTable
+          options={{ paging: false }}
           icons={tableIcons}
           title="User List"
           columns={columns}
@@ -177,9 +215,10 @@ render() {
                   })
             }}
        />
-    </div>
+    </Grid.Column>
+    </Grid.Row>
+    </Grid>
 
-      </header>
     </div>
   );
  }
